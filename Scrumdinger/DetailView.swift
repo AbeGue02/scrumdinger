@@ -47,6 +47,10 @@ struct DetailView: View {
         .navigationTitle(scrum.title)
         .toolbar {
             Button("Edit") {
+                editingScrum.title = scrum.title
+                editingScrum.lengthInMinutes = scrum.lengthInMinutes
+                editingScrum.attendees = scrum.attendees
+                editingScrum.theme = scrum.theme
                 isPresentingEditView = true
             }
         }
@@ -63,7 +67,11 @@ struct DetailView: View {
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
                                 isPresentingEditView = false
-                                scrum = editingScrum
+                                scrum.title = editingScrum.title
+                                scrum.lengthInMinutes = editingScrum.lengthInMinutes
+                                scrum.attendees = editingScrum.attendees
+                                scrum.theme = editingScrum.theme
+                                print(editingScrum)
                             }
                         }
                     }
